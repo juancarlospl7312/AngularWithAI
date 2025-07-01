@@ -1,0 +1,116 @@
+<div class="signup-container">
+  <h2>Sign Up</h2>
+  <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        type="text"
+        id="firstName"
+        formControlName="firstName"
+        class="form-control"
+        [class.is-invalid]="signupForm.get('firstName')?.invalid && (signupForm.get('firstName')?.touched || signupForm.get('firstName')?.dirty)"
+      />
+      <div *ngIf="signupForm.get('firstName')?.invalid && (signupForm.get('firstName')?.touched || signupForm.get('firstName')?.dirty)" class="invalid-feedback">
+        <div *ngIf="signupForm.get('firstName')?.errors?.['required']">
+          First name is required
+        </div>
+        <div *ngIf="signupForm.get('firstName')?.errors?.['minlength']">
+          First name must be at least 2 characters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input
+        type="text"
+        id="lastName"
+        formControlName="lastName"
+        class="form-control"
+        [class.is-invalid]="signupForm.get('lastName')?.invalid && (signupForm.get('lastName')?.touched || signupForm.get('lastName')?.dirty)"
+      />
+      <div *ngIf="signupForm.get('lastName')?.invalid && (signupForm.get('lastName')?.touched || signupForm.get('lastName')?.dirty)" class="invalid-feedback">
+        <div *ngIf="signupForm.get('lastName')?.errors?.['required']">
+          Last name is required
+        </div>
+        <div *ngIf="signupForm.get('lastName')?.errors?.['minlength']">
+          Last name must be at least 2 characters
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="form-control"
+        [class.is-invalid]="signupForm.get('email')?.invalid && (signupForm.get('email')?.touched || signupForm.get('email')?.dirty)"
+      />
+      <div *ngIf="signupForm.get('email')?.invalid && (signupForm.get('email')?.touched || signupForm.get('email')?.dirty)" class="invalid-feedback">
+        <div *ngIf="signupForm.get('email')?.errors?.['required']">
+          Email is required
+        </div>
+        <div *ngIf="signupForm.get('email')?.errors?.['email']">
+          Please enter a valid email address
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Gender</label>
+      <select id="gender" formControlName="gender" class="form-control" [class.is-invalid]="signupForm.get('gender')?.invalid && (signupForm.get('gender')?.touched || signupForm.get('gender')?.dirty)">
+        <option value="">Select gender</option>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+        <option value="other">Other</option>
+      </select>
+      <div *ngIf="signupForm.get('gender')?.invalid && (signupForm.get('gender')?.touched || signupForm.get('gender')?.dirty)" class="invalid-feedback">
+        Please select a gender
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="zipcode">Zip Code</label>
+      <input
+        type="text"
+        id="zipcode"
+        formControlName="zipcode"
+        class="form-control"
+        [class.is-invalid]="signupForm.get('zipcode')?.invalid && (signupForm.get('zipcode')?.touched || signupForm.get('zipcode')?.dirty)"
+      />
+      <div *ngIf="signupForm.get('zipcode')?.invalid && (signupForm.get('zipcode')?.touched || signupForm.get('zipcode')?.dirty)" class="invalid-feedback">
+        <div *ngIf="signupForm.get('zipcode')?.errors?.['required']">
+          Zip code is required
+        </div>
+        <div *ngIf="signupForm.get('zipcode')?.errors?.['pattern']">
+          Please enter a valid 5-digit zip code
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phoneNumber">Phone Number</label>
+      <input
+        type="tel"
+        id="phoneNumber"
+        formControlName="phoneNumber"
+        class="form-control"
+        [class.is-invalid]="signupForm.get('phoneNumber')?.invalid && (signupForm.get('phoneNumber')?.touched || signupForm.get('phoneNumber')?.dirty)"
+      />
+      <div *ngIf="signupForm.get('phoneNumber')?.invalid && (signupForm.get('phoneNumber')?.touched || signupForm.get('phoneNumber')?.dirty)" class="invalid-feedback">
+        <div *ngIf="signupForm.get('phoneNumber')?.errors?.['required']">
+          Phone number is required
+        </div>
+        <div *ngIf="signupForm.get('phoneNumber')?.errors?.['pattern']">
+          Please enter a valid 10-digit phone number
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" [disabled]="!signupForm.valid" class="submit-btn">
+      Sign Up
+    </button>
+  </form>
+</div>
