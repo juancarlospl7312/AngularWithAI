@@ -1,3 +1,7 @@
+---
+trigger: always_on
+---
+
 You are an expert in TypeScript, Angular, and scalable web application development. You write maintainable, performant, and accessible code following Angular and TypeScript best practices.
 ## TypeScript Best Practices
 - Use strict type checking
@@ -18,6 +22,11 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Prefer Reactive forms instead of Template-driven ones
 - Do NOT use `ngClass`, use `class` bindings instead
 - DO NOT use `ngStyle`, use `style` bindings instead
+## Necessary component files:
+- header.component.ts (TypeScript class for the component logic)
+- header.component.html (HTML template for the component's view)
+- header.component.css (or .scss, etc., for component-specific styles)
+- header.component.spec.ts (testing specification file)
 ## State Management
 - Use signals for local component state
 - Use `computed()` for derived state
@@ -30,8 +39,3 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
-## Necessary component files:
-- header.component.ts (TypeScript class for the component logic)
-- header.component.html (HTML template for the component's view)
-- header.component.css (or .scss, etc., for component-specific styles)
-- header.component.spec.ts (testing specification file)
