@@ -1,50 +1,62 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatError, MatFormFieldModule, MatLabel } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatCommonModule, MatNativeDateModule } from '@angular/material/core';
+import { User } from '../../../models/user.model';
 
 @Component({
   selector: 'app-edit-profile',
+  standalone: true,
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatIconModule,
+    MatCardModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCommonModule,
+  ],
   templateUrl: './edit-profile.component.html',
   styleUrls: ['./edit-profile.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, RouterLink]
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class EditProfileComponent {
-  profileForm = new FormGroup({
+  private user!: User;
+
+  editProfileForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
     lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    gender: new FormControl('', Validators.required),
-    zipcode: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^[0-9]{5}$')
-    ]),
-    phoneNumber: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^\d{10}$')
-    ])
+    city: new FormControl(null, [Validators.required]),
+    phoneNumber: new FormControl('', [Validators.required]),
+    zipCode: new FormControl(null, [Validators.required]),
+    gender: new FormControl('', [Validators.required]),
   });
 
-  isLoading = false;
-  successMessage = '';
-  errorMessage = '';
+  genders = ['Male', 'Female', 'Other', 'Prefer not to say'];
 
-  onSubmit() {
-    if (this.profileForm.valid) {
-      this.isLoading = true;
-      // Here you would typically make an API call to update the profile
-      // For now, we'll just log the values
-      console.log('Profile updated:', this.profileForm.value);
-      this.successMessage = 'Profile updated successfully';
-      setTimeout(() => {
-        this.isLoading = false;
-      }, 1000);
-    }
+  ngOnInit() {
+    // TODO: Load user data from service
+    // this.editProfileForm.patchValue(this.user.data);
   }
 
-  onCancel() {
-    this.profileForm.reset();
+  onSubmit() {
+    if (this.editProfileForm.valid) {
+      // TODO: Implement profile update logic
+      console.log('Form submitted:', this.editProfileForm.value);
+    }
   }
 }

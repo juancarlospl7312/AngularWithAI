@@ -9,7 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
-  selector: 'app-forgot-password',
+  selector: 'app-signin',
   standalone: true,
   imports: [
     CommonModule,
@@ -21,23 +21,35 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatCardModule,
     MatProgressBarModule,
   ],
-  templateUrl: './forgot-password.component.html',
-  styleUrls: ['./forgot-password.component.scss'],
+  templateUrl: './signin.component.html',
+  styleUrls: ['./signin.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ForgotPasswordComponent {
-  forgotPasswordForm = new FormGroup({
+export class SigninComponent {
+  signinForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [
+      Validators.required,
+      Validators.minLength(6)
+    ])
   });
 
   get email() {
-    return this.forgotPasswordForm.get('email');
+    return this.signinForm.get('email');
+  }
+
+  get password() {
+    return this.signinForm.get('password');
   }
 
   onSubmit() {
-    if (this.forgotPasswordForm.valid) {
-      // TODO: Implement forgot password logic
-      console.log('Forgot password form submitted:', this.forgotPasswordForm.value);
+    if (this.signinForm.valid) {
+      // TODO: Implement sign-in logic
+      console.log('Sign in attempt:', this.signinForm.value);
     }
+  }
+
+  onReset() {
+    this.signinForm.reset();
   }
 }

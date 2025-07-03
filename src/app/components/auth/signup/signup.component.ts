@@ -1,39 +1,54 @@
-import {ChangeDetectionStrategy, Component, inject} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
-import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatIconModule,
+    MatCardModule,
+    MatProgressBarModule,
+  ],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignupComponent {
-  // private readonly logger = inject(LoggerService);
-
   signupForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
     lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    gender: new FormControl('', Validators.required),
-    zipcode: new FormControl('', [
-      Validators.required,
-      Validators.pattern('^[0-9]{5}$')
-    ]),
     phoneNumber: new FormControl('', [
       Validators.required,
-      Validators.pattern('^\d{10}$')
-    ])
+    ]),
+    city: new FormControl('', Validators.required),
+    zipCode: new FormControl('', [
+      Validators.required,
+      Validators.pattern('^[0-9]{5}(?:-[0-9]{4})?$')
+    ]),
+    gender: new FormControl('', Validators.required)
   });
+
+  genders = ['Male', 'Female', 'Other'];
 
   onSubmit() {
     if (this.signupForm.valid) {
-      const formValue = this.signupForm.getRawValue();
-      // this.logger.info('Form submitted:', formValue);
-      // Here you would typically make an API call to submit the form data
+      // Handle form submission here
+      console.log('Form submitted:', this.signupForm.value);
     }
   }
 }
