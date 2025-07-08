@@ -6,6 +6,9 @@ import { ChangePasswordComponent } from './components/auth/change-password/chang
 import { SigninComponent } from './components/auth/signin/signin.component';
 import { UserListComponent } from './components/users/user-list/user-list.component';
 
+import { CartComponent } from './components/cart/cart.component';
+import { ProductComponent } from './components/product/product.component';
+
 export const routes: Routes = [
   { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signin', component: SigninComponent },
@@ -14,4 +17,6 @@ export const routes: Routes = [
   { path: 'change-password', component: ChangePasswordComponent },
   { path: 'edit-profile', component: EditProfileComponent },
   { path: 'user-list', component: UserListComponent },
+  { path: 'cart', component: CartComponent },
+  { path: 'product', component: ProductComponent },
 ];
