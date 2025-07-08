@@ -25,7 +25,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 ## Necessary component files:
 - header.component.ts (TypeScript class for the component logic)
 - header.component.html (HTML template for the component's view)
-- header.component.css (or .scss, etc., for component-specific styles)
+- header.component.scss (for component-specific styles)
 - header.component.spec.ts (testing specification file)
 ## State Management
 - Use signals for local component state

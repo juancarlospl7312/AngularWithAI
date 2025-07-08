@@ -4,12 +4,14 @@ import { ForgotPasswordComponent } from './components/auth/forgot-password/forgo
 import { EditProfileComponent } from './components/profile/edit-profile/edit-profile.component';
 import { ChangePasswordComponent } from './components/auth/change-password/change-password.component';
 import { SigninComponent } from './components/auth/signin/signin.component';
+import { UserListComponent } from './components/users/user-list/user-list.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/signin', pathMatch: 'full' },
   { path: 'signin', component: SigninComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'change-password', component: ChangePasswordComponent },
   { path: 'edit-profile', component: EditProfileComponent },
+  { path: 'user-list', component: UserListComponent },
 ];

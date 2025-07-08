@@ -1,0 +1,13 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Remove User</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>Are you sure you want to remove this user?</p>
+    <p><strong>{{data.user.firstName}} {{data.user.lastName}}</strong></p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button mat-button color="warn" (click)="removeUser()">Remove</button>
+  </mat-card-actions>
+</mat-card>
