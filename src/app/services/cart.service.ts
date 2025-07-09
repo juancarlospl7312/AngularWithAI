@@ -6,12 +6,27 @@ import { signal } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  private items = signal<Product[]>([]);
+  private items = signal<Product[]>([
+    {
+      id: 1,
+      name: 'Wireless Headphones',
+      price: 199.99,
+      description: 'Premium wireless headphones with noise cancellation',
+      image: 'https://placehold.co/200x200?text=Headphones'
+    },
+    {
+      id: 2,
+      name: 'Smart Watch',
+      price: 149.99,
+      description: 'Feature-rich smart watch with health tracking',
+      image: 'https://placehold.co/200x200?text=Smart+Watch'
+    },
+  ]);
 
   addToCart(product: Product): void {
     const currentItems = this.items();
     const existingItemIndex = currentItems.findIndex(item => item.id === product.id);
-    
+
     if (existingItemIndex !== -1) {
       currentItems[existingItemIndex].quantity = (currentItems[existingItemIndex].quantity || 1) + 1;
     } else {
